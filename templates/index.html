@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,98 +12,186 @@
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        
+
     <link href="static/styles.css" rel="stylesheet">
     <title>URL Detection</title>
-    
+
+    <style>
+        /* Custom styles here */
+
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .form__input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form__label {
+            font-size: 14px;
+        }
+
+        .add_email_button {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button2 {
+            display: none;
+            background-color: #dc3545;
+        }
+
+        .button1,
+        .button2 {
+            margin-top: 20px;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .button1:hover,
+        .button2:hover {
+            opacity: 0.8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                margin-top: 30px;
+            }
+
+            .form,
+            #form2 {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 </head>
+<body style="background-image: linear-gradient(to bottom, #bcbbbb, #bcbbbb);">
 
-<body>
-    
-<div class="container">
-    <div class="row">
-        <div class="form col-md" id="form1">
-            <h2>PHISHING URL DETECTION</h2>
-    
-            <br>
-            <form action="/" method="post">
-                <input type="text" class="form__input" name="url" id="url" placeholder="Enter URL" required />
-                <label for="url" class="form__label">URL</label>
-                
-                <!-- Add email input fields -->
-                <div id="email_fields">
-                    <input type="email" class="form__input" name="email" id="email" placeholder="Enter your email address" />
-                    <label for="email" class="form__label">Email</label>
-                </div>
-                <button type="button" class="add_email_button" onclick="addEmailField()">Add Email</button>
-                
-                <button class="button" role="button">Check here</button>
-            </form>
-           
+
+<!-- <body style="background-image: url('R.jpeg');"> -->
+
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md" id="form2">
+                <h2 class="text-center mb-4" >PHISHING URL DETECTION</h2>
+                <form action="/" method="post">
+                    <input type="text" class="form__input" name="url" id="url" placeholder="Enter URL" required />
+                    <label for="url" class="form__label">URL</label>
+                    <!-- Add email input fields -->
+                    <div id="email_fields">
+                        <input type="email" class="form__input" name="email" id="email"
+                            placeholder="Enter your email address" />
+                        <label for="email" class="form__label">Email</label>
+                    </div>
+                    <button type="button" class="add_email_button btn btn-primary btn-block"
+                        onclick="addEmailField()">Add Email</button>
+                    <button class="button btn btn-primary btn-block" role="button">Check here</button>
+                </form>
+            </div>
         </div>
-    
-        <div class="col-md" id="form2">
-            <br>
-            <h6 class="right"><a href="{{ url }}" target="_blank">{{ url }}</a></h6>
-            <br>
-            <h3 id="prediction"></h3>
-            <button class="button2" id="button2" role="button" onclick="window.open('{{ url }}')" target="_blank">Still want to Continue</button>
-            <button class="button1" id="button1" role="button" onclick="window.open('{{ url }}')" target="_blank">Continue</button>
-        </div> 
     </div>
-    <br>
-</div>
 
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md" id="form2">
+                <h6 class="text-right mb-3"><a href="{{ url }}" target="_blank">{{ url }}</a></h6>
+                <h3 id="prediction" class="text-center"></h3>
+                <button class="button2 btn btn-danger btn-block" id="button2" role="button"
+                    onclick="window.open('{{ url }}')" target="_blank">Still want to Continue</button>
+                <button class="button1 btn btn-success btn-block" id="button1" role="button"
+                    onclick="window.open('{{ url }}')" target="_blank">Continue</button>
+            </div>
+        </div>
+    </div>
 
-<script>
-    function addEmailField() {
-        var container = document.getElementById("email_fields");
-        var input = document.createElement("input");
-        input.type = "email";
-        input.className = "form__input";
-        input.name = "email";
-        input.placeholder = "Enter your email address";
-        var label = document.createElement("label");
-        label.className = "form__label";
-        label.htmlFor = "email";
-        label.textContent = "Email";
-        container.appendChild(input);
-        container.appendChild(label);
-    }
-        
-    let x = '{{xx}}';
-    let num = x*100;
-    if (0<=x && x<0.50){
-        num = 100-num;
-    }
-    let txtx = num.toString();
-    if(x<=1 && x>=0.50){
-        var label = "Website is "+txtx +"% safe to use...";
-        document.getElementById("prediction").innerHTML = label;
-        document.getElementById("button1").style.display="block";
-    }
-    else if (0<=x && x<0.50){
-        var label = "Website is "+txtx +"% unsafe to use..."
-        document.getElementById("prediction").innerHTML = label ;
-        document.getElementById("button2").style.display="block";
-    }
-</script>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function addEmailField() {
+            var container = document.getElementById("email_fields");
+            var input = document.createElement("input");
+            input.type = "email";
+            input.className = "form__input";
+            input.name = "email";
+            input.placeholder = "Enter your email address";
+            var label = document.createElement("label");
+            label.className = "form__label";
+            label.htmlFor = "email";
+            label.textContent = "Email";
+            container.appendChild(input);
+            container.appendChild(label);
+        }
+
+        let x = '{{xx}}';
+        let num = x * 100;
+        if (0 <= x && x < 0.50) {
+            num = 100 - num;
+        }
+        let txtx = num.toString();
+        if (x <= 1 && x >= 0.50) {
+            var label = "Website is " + txtx + "% safe to use...";
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button1").style.display = "block";
+        } else if (0 <= x && x < 0.50) {
+            var label = "Website is " + txtx + "% unsafe to use..."
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button2").style.display = "block";
+        }
+    </script>
 
 </body>
+
 </html>
-
-
-
 
 
 
